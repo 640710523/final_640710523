@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ApiCaller {
-  static const host = 'https://jsonplaceholder.typicode.com';
+  static const host = 'https://cpsu-api-49b593d4e146.herokuapp.com';
   static const baseUrl = '$host/api/2_2566/final';
   static final _dio = Dio(BaseOptions(responseType: ResponseType.plain));
 

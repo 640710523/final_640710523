@@ -41,15 +41,51 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Final Demo'),
+        flexibleSpace: Center(
+          child: Column(
+            children: [
+              Text(
+                'Webby Fondue',
+                 style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                "ระบบรายงานเว็บเลวๆ",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
+              )             
+            ],
+          ),
+        ),
+        leading: BackButton(color: Colors.white),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
+        
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Todo List', style: textTheme.titleMedium),
+            Text('* ต้องกรอกข้อมูล', style: textTheme.titleMedium),
             const SizedBox(height: 8.0),
+            TextField(
+                decoration: InputDecoration(
+                  labelText: 'URL *',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'รายละเอียด',
+                  border: OutlineInputBorder(),
+                ),
+              ),
             Expanded(
               child: ListView.builder(
                 itemCount: _todoItems.length,
@@ -58,27 +94,20 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     child: ListTile(
                       title: Text(item.title),
-                      subtitle: Text('User ID: ${item.userId}'),
-                      trailing: Icon(item.completed ? Icons.check : null),
+                      subtitle: Text('User ID: ${item.id}'),
                     ),
                   );
                 },
               ),
             ),
-            const SizedBox(height: 24.0),
-
-            // ปุ่มทดสอบ POST API
-            ElevatedButton(
-              onPressed: _handleApiPost,
-              child: const Text('Test POST API'),
-            ),
+            
 
             const SizedBox(height: 8.0),
 
             // ปุ่มทดสอบ OK Dialog
             ElevatedButton(
-              onPressed: _handleShowDialog,
-              child: const Text('Show OK Dialog'),
+              onPressed: _handleApiPost,
+              child: const Text('ส่งข้อมูล'),
             ),
           ],
         ),
